@@ -1,0 +1,69 @@
+{
+  "Name": "La Corona",
+  "ThreadCount": 4,
+  "FractalType": "FractalSharp.Algorithms.Fractals.NewtonMethodAlgorithm`2, FractalSharp.Algorithms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "InnerColorType": "FractalSharp.Algorithms.Coloring.SingleColorAlgorithm, FractalSharp.Algorithms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "OuterColorType": "FractalSharp.Algorithms.Coloring.ComplexArgumentAlgorithm, FractalSharp.Algorithms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "FractalParams": {
+    "$type": "FractalSharp.Algorithms.Fractals.NewtonMethodAlgorithmParams`1[[System.Double, System.Private.CoreLib]], FractalSharp.Algorithms",
+    "MaxIterations": 256,
+    "Position": "<0, 0>",
+    "Scale": 1.0,
+    "Power": "<7, 0>",
+    "Constant": "<2, 0>",
+    "Tolerance": ".0001"
+  },
+  "InnerColorParams": {
+    "$type": "FractalSharp.Algorithms.Coloring.EmptyColoringParams, FractalSharp.Algorithms"
+  },
+  "OuterColorParams": {
+    "$type": "FractalSharp.Algorithms.Coloring.ComplexArgumentAlgorithmParams, FractalSharp.Algorithms",
+    "Scale": 256.0
+  },
+  "InnerGradient": {
+    "Length": 256,
+    "Keys": [
+      {
+        "Color": "#FF000000"
+      },
+      {
+        "Color": "#FF040449"
+      },
+      {
+        "Color": "#FF1852B1"
+      },
+      {
+        "Color": "#FFD3ECF8"
+      },
+      {
+        "Color": "#FFFFAA00"
+      },
+      {
+        "Color": "#FF6A3403"
+      }
+    ]
+  },
+  "OuterGradient": {
+    "Length": 256,
+    "Keys": [
+      {
+        "Color": "#FF000000"
+      },
+      {
+        "Color": "#FF040449"
+      },
+      {
+        "Color": "#FF1852B1"
+      },
+      {
+        "Color": "#FFD3ECF8"
+      },
+      {
+        "Color": "#FFFFAA00"
+      },
+      {
+        "Color": "#FF6A3403"
+      }
+    ]
+  }
+}

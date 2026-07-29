@@ -1,0 +1,43 @@
+{
+  "Name": "Spirals",
+  "ThreadCount": 4,
+  "FractalType": "FractalSharp.Algorithms.Fractals.SquareMandelbrotAlgorithm`2, FractalSharp.Algorithms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "InnerColorType": "FractalSharp.Algorithms.Coloring.RadialGradientAlgorithm, FractalSharp.Algorithms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "OuterColorType": "FractalSharp.Algorithms.Coloring.SmoothColoringAlgorithm, FractalSharp.Algorithms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "FractalParams": {
+    "$type": "FractalSharp.Algorithms.Fractals.SquareMandelbrotAlgorithmParams`1[[System.Double, System.Private.CoreLib]], FractalSharp.Algorithms",
+    "MaxIterations": 1024,
+    "Position": "<-0.7447338502172013, 0.1097773624159644>",
+    "Scale": 63940.118520186516,
+    "InitialValue": "<0, 0>"
+  },
+  "InnerColorParams": {
+    "$type": "FractalSharp.Algorithms.Coloring.RadialGradientAlgorithmParams, FractalSharp.Algorithms",
+    "Scale": 1024.0
+  },
+  "OuterColorParams": {
+    "$type": "FractalSharp.Algorithms.Coloring.EmptyColoringParams, FractalSharp.Algorithms"
+  },
+  "InnerGradient": {
+    "Length": 256,
+    "Keys": [
+      { "Color": "#FF000000" },
+      { "Color": "#FF040449" },
+      { "Color": "#FF1852B1" },
+      { "Color": "#FFD3ECF8" },
+      { "Color": "#FFFFAA00" },
+      { "Color": "#FF6A3403" }
+    ]
+  },
+  "OuterGradient": {
+    "Length": 256,
+    "Keys": [
+      { "Color": "#FF000000" },
+      { "Color": "#FF040449" },
+      { "Color": "#FF1852B1" },
+      { "Color": "#FFD3ECF8" },
+      { "Color": "#FFFFAA00" },
+      { "Color": "#FF6A3403" }
+    ]
+  }
+}
