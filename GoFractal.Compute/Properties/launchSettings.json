@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GoFractal.Compute": {
+      "commandName": "Project",
+      "commandLineArgs": "config.json"
+    }
+  }
+}

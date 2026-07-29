@@ -1,0 +1,3 @@
+[submodule "GoFractal.Common"]
+	path = GoFractal.Common
+	url = https://github.com/IsaMorphic/GoFractal.Common.git
