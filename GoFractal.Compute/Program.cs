@@ -3,6 +3,7 @@ using FractalSharp.Algorithms;
 using FractalSharp.Imaging;
 using FractalSharp.Processing;
 using GoFractal.Common;
+using Microsoft.Extensions.FileSystemGlobbing;
 using SkiaSharp;
 using System.CommandLine;
 
@@ -57,18 +58,18 @@ namespace GoFractal.Compute
     {
         private static readonly CancellationTokenSource cts = new CancellationTokenSource();
 
-        static async Task Main(string[] args)
+        static Task<int> Main(string[] args)
         {
             Console.CancelKeyPress += OnCancelKeyPress;
 
             RootCommand rootCommand = new RootCommand("GoFractal.Compute - Lightning fast companion app to GoFractal for high resolution, customized fractal rendering.");
 
-            Argument<FileInfo[]> configFilesArgument = new Argument<FileInfo[]>("config-files")
+            Argument<string[]> configFilesArgument = new Argument<string[]>("config-files")
             {
                 Arity = ArgumentArity.OneOrMore,
                 Description = "List of one or more GoFractal JSON files to render"
             };
-            configFilesArgument.AcceptExistingOnly();
+            configFilesArgument.AcceptLegalFilePathsOnly();
             rootCommand.Add(configFilesArgument);
 
             Option<int> imageWidthOption = new Option<int>("--image-width")
@@ -92,20 +93,27 @@ namespace GoFractal.Compute
             };
             rootCommand.Add(numThreadsOption);
 
-            rootCommand.SetAction(async Task (r, ct) =>
+            rootCommand.SetAction(async Task<int> (r, ct) =>
             {
+                int exitCode = 0;
                 Console.WriteLine("Process started.");
 
-                foreach (string configFilePath in r.GetRequiredValue(configFilesArgument).Select(x => x.FullName))
+                int imageWidth = r.GetRequiredValue(imageWidthOption);
+                int imageHeight = r.GetRequiredValue(imageHeightOption);
+                int numThreads = r.GetRequiredValue(numThreadsOption);
+
+                Matcher matcher = new Matcher();
+                matcher.AddIncludePatterns(r.GetRequiredValue(configFilesArgument));
+
+                foreach (string configFilePath in matcher.GetResultsInFullPath(Environment.CurrentDirectory))
                 {
-                    if (ct.IsCancellationRequested) break;
+                    if (ct.IsCancellationRequested) 
+                    {
+                        exitCode = unchecked((int)0x800704C7);
+                        break; 
+                    }
 
                     string imageFilePath = Path.ChangeExtension(configFilePath, ".png");
-
-                    int imageWidth = r.GetRequiredValue(imageWidthOption);
-                    int imageHeight = r.GetRequiredValue(imageHeightOption);
-
-                    int numThreads = r.GetRequiredValue(numThreadsOption);
 
                     bool frameFinished = false;
                     try
@@ -179,7 +187,7 @@ namespace GoFractal.Compute
                         Console.WriteLine("Image rendered successfully!");
                         frameFinished = true;
                     }
-                    catch (AggregateException ex) when (ex.InnerExceptions.Any(err => err.GetType() == typeof(OperationCanceledException))) { }
+                    catch (AggregateException ex) when (ex.InnerExceptions.Any(err => err is OperationCanceledException)) { }
                     catch (OperationCanceledException) { }
 
                     if (!frameFinished)
@@ -188,10 +196,11 @@ namespace GoFractal.Compute
                     }
                 }
 
-                Console.WriteLine("Process halted. All remaining tasks completed gracefully!");
+                Console.WriteLine($"Process halted.");
+                return exitCode;
             });
 
-            await rootCommand.Parse(args).InvokeAsync(cancellationToken: cts.Token);
+            return rootCommand.Parse(args).InvokeAsync(cancellationToken: cts.Token);
         }
 
         private static void OnCancelKeyPress(object? sender, ConsoleCancelEventArgs e)
