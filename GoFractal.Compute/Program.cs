@@ -179,6 +179,7 @@ namespace GoFractal.Compute
                         }
 
                         Console.WriteLine($"Writing \"{Path.GetFileName(imageFilePath)}\" next to JSON configuration file...");
+                        using (bitmap)
                         using (SKWStream outputStream = new SKFileWStream(imageFilePath))
                         {
                             bitmap.Encode(outputStream, SKEncodedImageFormat.Png, 100);
