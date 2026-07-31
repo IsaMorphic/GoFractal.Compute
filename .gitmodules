@@ -1,3 +1,6 @@
 [submodule "GoFractal.Common"]
 	path = GoFractal.Common
 	url = https://github.com/IsaMorphic/GoFractal.Common.git
+[submodule "FractalSharp"]
+	path = FractalSharp
+	url = https://github.com/IsaMorphic/FractalSharp.git
