@@ -67,7 +67,7 @@ namespace GoFractal.Compute
             Argument<string[]> configFilesArgument = new Argument<string[]>("config-files")
             {
                 Arity = ArgumentArity.OneOrMore,
-                Description = "List of one or more GoFractal JSON files to render"
+                Description = "List of one or more GoFractal JSON files to render (can include wildcards like *.json)"
             };
             configFilesArgument.AcceptLegalFilePathsOnly();
             rootCommand.Add(configFilesArgument);
