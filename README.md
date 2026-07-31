@@ -19,11 +19,11 @@ git clone --recursive https://github.com/IsaMorphic/GoFractal.Compute.git
 cd GoFractal.Compute
 
 # Run application directly from source code (on Windows)
-.\update-run.ps1
+./scripts/update-run.ps1
 
 # Run application directly from source code (on Linux)
-.\update-run.sh
+./scripts/update-run.sh
 
 # Run application directly from source code (on macOS)
-.\update-run.command
+./scripts/update-run.command
 ```
