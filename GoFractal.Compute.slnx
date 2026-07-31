@@ -1,6 +1,8 @@
 <Solution>
-  <Project Path="GoFractal.Common/FractalSharp/FractalSharp.Algorithms/FractalSharp.Algorithms.csproj" />
-  <Project Path="GoFractal.Common/FractalSharp/FractalSharp/FractalSharp.csproj" />
-  <Project Path="GoFractal.Common/GoFractal.Common/GoFractal.Common.csproj" />
+  <Folder Name="/FractalSharp/">
+    <Project Path="FractalSharp/FractalSharp.Algorithms/FractalSharp.Algorithms.csproj" />
+    <Project Path="FractalSharp/FractalSharp/FractalSharp.csproj" />
+  </Folder>
+  <Project Path="GoFractal.Common/GoFractal.Common.csproj" />
   <Project Path="GoFractal.Compute/GoFractal.Compute.csproj" />
 </Solution>
