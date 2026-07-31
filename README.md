@@ -35,21 +35,21 @@ GoFractal.Compute comes pre-packaged with launcher scripts for all supported pla
 
 ```powershell
 # Run application directly from source code (on Windows)
-.\scripts\update-run.ps1
+scripts\update-run.ps1
 ```
 
 ### On macOS
 
 ```bash
 # Run application directly from source code (on macOS)
-./scripts/update-run.command
+scripts/update-run.command
 ```
 
 ### On Linux
 
 ```bash
 # Run application directly from source code (on Linux)
-./scripts/update-run.sh
+scripts/update-run.sh
 ```
 
 # Credits
